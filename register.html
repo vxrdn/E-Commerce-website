@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - KicksKart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 380px;
+            max-width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            color: #4a6cf7;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #4a6cf7;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4a6cf7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        button:hover {
+            background: #3a5bd9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        
+        a {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: #3a5bd9;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <h1>KicksKart</h1>
+        </div>
+        <h2>Create Account</h2>
+        <form id="registerForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+        
+            const data = {
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value
+            };
+        
+            try {
+                console.log("Sending registration request...");
+                
+                const response = await fetch("/auth/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                console.log("Response status:", response.status);
+                console.log("Response headers:", [...response.headers.entries()]);
+                
+                // Try to get the response text first to see what we're dealing with
+                const responseText = await response.text();
+                console.log("Response body:", responseText);
+        
+                // Better error handling
+                if (!response.ok) {
+                    let errorMessage = "Registration failed";
+                    try {
+                        // Try to parse the text as JSON if possible
+                        if (responseText) {
+                            const errorData = JSON.parse(responseText);
+                            errorMessage = errorData.detail || errorMessage;
+                        }
+                    } catch (parseError) {
+                        console.error("Error parsing error response:", parseError);
+                        errorMessage += " (Server response could not be parsed)";
+                    }
+                    throw new Error(errorMessage);
+                }
+        
+                // Try to parse the successful response
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (parseError) {
+                    console.error("Error parsing success response:", parseError);
+                    throw new Error("Registration succeeded but response format was invalid");
+                }
+                
+                alert("Registration successful! Redirecting to login...");
+                window.location.href = "login.html";
+            } catch (error) {
+                console.error("Registration error:", error);
+                alert(error.message || "Error registering. Please try again.");
+            }
+        });
+    </script>
+
+</body>
+</html>

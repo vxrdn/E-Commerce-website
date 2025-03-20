@@ -1,0 +1,204 @@
+/* Responsive Styles for KicksKart */
+
+/* Base Responsive Settings */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 2px 0;
+    transition: 0.3s;
+}
+
+/* Mobile Navigation Styles */
+@media only screen and (max-width: 768px) {
+    .navBottom {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+    
+    .navBottom.active {
+        display: flex;
+    }
+    
+    .menuItem {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .navTop {
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+    
+    .navItem:nth-child(2) {
+        width: 40%;
+    }
+    
+    .limitedOffer {
+        font-size: 12px;
+    }
+}
+
+/* Slider Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .slider {
+        height: 60vh;
+    }
+    
+    .sliderTitle {
+        font-size: 38px;
+    }
+    
+    .sliderPrice {
+        font-size: 24px;
+    }
+    
+    .buyButton {
+        padding: 8px 16px;
+    }
+    
+    .sliderImg {
+        width: 70%;
+    }
+}
+
+/* Features Section */
+@media only screen and (max-width: 768px) {
+    .features {
+        flex-direction: column;
+    }
+    
+    .feature {
+        margin-bottom: 20px;
+    }
+}
+
+/* Product Section */
+@media only screen and (max-width: 768px) {
+    .product {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .productImg {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    
+    .productDetails {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .payment {
+        width: 90%;
+    }
+}
+
+/* Gallery Section */
+@media only screen and (max-width: 768px) {
+    .gallery {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .galleryItem {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* New Season Section */
+@media only screen and (max-width: 768px) {
+    .newSeason {
+        flex-direction: column;
+    }
+    
+    .nsItem {
+        width: 100%;
+    }
+    
+    .nsItem:nth-child(2) {
+        padding: 20px;
+    }
+}
+
+/* Footer Section */
+@media only screen and (max-width: 768px) {
+    footer {
+        flex-direction: column;
+    }
+    
+    .footerLeft {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .footerRight {
+        width: 100%;
+        padding: 20px;
+        align-items: center;
+    }
+    
+    .footerMenu {
+        margin-bottom: 20px;
+    }
+    
+    .fMail {
+        width: 100%;
+    }
+}
+
+/* Small Mobile Devices */
+@media only screen and (max-width: 480px) {
+    .navItem:nth-child(1), .navItem:nth-child(3) {
+        display: none;
+    }
+    
+    .navItem:nth-child(2) {
+        width: 100%;
+    }
+    
+    .sliderTitle {
+        font-size: 24px;
+    }
+    
+    .sliderPrice {
+        font-size: 18px;
+    }
+    
+    .buyButton {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
