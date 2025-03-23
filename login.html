@@ -193,8 +193,9 @@
                     throw new Error("Login succeeded but response format was invalid");
                 }
                 
-                // Store token in localStorage for future authenticated requests
+                // Store token and user info in localStorage for future authenticated requests
                 localStorage.setItem("token", data.access_token);
+                localStorage.setItem("user", JSON.stringify(data.user));
                 
                 alert("Login successful! Redirecting to home page...");
                 window.location.href = "index.html";
