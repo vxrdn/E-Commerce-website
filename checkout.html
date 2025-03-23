@@ -355,13 +355,14 @@
             document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
         }
         
-        function processPayment() {
+        async function processPayment() {
             // Validate form fields
             const phoneInput = document.getElementById('phoneNumber');
             const cardInput = document.getElementById('cardNumber');
             const monthInput = document.getElementById('expiryMonth');
             const yearInput = document.getElementById('expiryYear');
             const cvvInput = document.getElementById('cvv');
+            const addressInput = document.getElementById('address');
             
             if (!/^\d{10}$/.test(phoneInput.value)) {
                 alert("Phone number must be exactly 10 digits.");
@@ -388,14 +389,53 @@
                 return;
             }
             
-            // Process payment (this would typically send data to a server)
+            // Get checkout data
+            const checkoutData = JSON.parse(localStorage.getItem('checkoutData') || '{"items":[],"total":0}');
             
-            // Show confirmation and clear cart
-            localStorage.removeItem('cart');
-            localStorage.removeItem('checkoutData');
+            // Prepare order data
+            const orderData = {
+                items: checkoutData.items,
+                shippingAddress: addressInput.value,
+                phoneNumber: phoneInput.value,
+                totalAmount: parseFloat(document.getElementById('totalAmount').textContent.replace('$', '')),
+                cardNumber: cardInput.value
+            };
             
-            // Show confirmation overlay
-            document.getElementById('confirmationOverlay').style.display = 'flex';
+            try {
+                // Send order to server
+                const token = localStorage.getItem('token');
+                const response = await fetch('/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(orderData)
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.detail || 'Failed to place order');
+                }
+                
+                // Order successful - clear cart and show confirmation
+                localStorage.removeItem('cart');
+                localStorage.removeItem('checkoutData');
+                
+                // Store order number for reference
+                localStorage.setItem('lastOrder', JSON.stringify({
+                    orderNumber: result.orderNumber,
+                    date: new Date().toISOString()
+                }));
+                
+                // Show confirmation overlay
+                document.getElementById('confirmationOverlay').style.display = 'flex';
+                
+            } catch (error) {
+                console.error('Order submission error:', error);
+                alert('There was a problem placing your order: ' + error.message);
+            }
         }
     </script>
 </body>

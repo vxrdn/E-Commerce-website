@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - KicksKart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .confirmation-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .confirmation-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 30px;
+        }
+        
+        .confirmation-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .confirmation-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .order-details {
+            margin: 30px 0;
+            text-align: left;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .order-detail-item {
+            margin-bottom: 10px;
+            display: flex;
+        }
+        
+        .order-detail-label {
+            font-weight: bold;
+            width: 180px;
+        }
+        
+        .confirmation-buttons {
+            margin-top: 40px;
+        }
+        
+        .confirmation-button {
+            padding: 12px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .primary-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .secondary-button {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .confirmation-container {
+                padding: 20px;
+                margin: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <div class="confirmation-icon">✓</div>
+        <h1 class="confirmation-title">Order Confirmed!</h1>
+        <p class="confirmation-message">
+            Thank you for your purchase. Your order has been successfully placed and will be processed shortly.
+            A confirmation email has been sent to your registered email address.
+        </p>
+        
+        <div class="order-details">
+            <div class="order-detail-item">
+                <div class="order-detail-label">Order Number:</div>
+                <div id="orderNumber">-</div>
+            </div>
+            <div class="order-detail-item">
+                <div class="order-detail-label">Date:</div>
+                <div id="orderDate">-</div>
+            </div>
+            <div class="order-detail-item">
+                <div class="order-detail-label">Status:</div>
+                <div>Processing</div>
+            </div>
+        </div>
+        
+        <div class="confirmation-buttons">
+            <button class="confirmation-button primary-button" onclick="window.location.href='index.html'">Continue Shopping</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we have order data in localStorage
+            const lastOrder = JSON.parse(localStorage.getItem('lastOrder') || '{}');
+            
+            if (lastOrder.orderNumber) {
+                document.getElementById('orderNumber').textContent = lastOrder.orderNumber;
+                
+                // Format date
+                const orderDate = new Date(lastOrder.date);
+                document.getElementById('orderDate').textContent = orderDate.toLocaleDateString() + ' ' + 
+                                                               orderDate.toLocaleTimeString();
+            } else {
+                // If no order data, redirect to home
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

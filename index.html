@@ -10,6 +10,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
+    <!-- Add FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>KicksKart</title>
 </head>
 
@@ -19,15 +21,6 @@
             <div class="navItem">
                 <img src="./image/sneakers.png" alt="KicksKart Logo" class="logo">
             </div>
-            <div class="navItem">
-                <div class="search">
-                    <input type="text" placeholder="Search..." class="searchInput">
-                    <img src="./image/search.png" width="20" height="20" alt="Search Icon" class="searchIcon">
-                </div>
-            </div>
-            <div class="navItem">
-                <span class="limitedOffer">Limited Offer!</span>
-            </div>
             <div class="navItem auth-buttons">
                 <button class="authButton loginBtn">Login</button>
                 <button class="authButton signupBtn">Sign Up</button>
@@ -35,7 +28,7 @@
             <div class="navItem user-profile" style="display: none;">
                 <span class="username">Welcome, User</span>
                 <div class="cart-icon-container">
-                    <img src="./image/cart.png" alt="Shopping Cart" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
                     <span class="cart-count">0</span>
                 </div>
                 <button class="logoutBtn">Logout</button>
@@ -373,10 +366,8 @@
             cursor: pointer;
         }
         
-        .cart-icon {
-            width: 24px;
-            height: 24px;
-            filter: invert(1);
+        .fa-cart-shopping {
+            font-size: 24px;
         }
         
         .cart-count {

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const { connectDB } = require('./config/db');
 const authRoutes = require('./routes/auth');
+const orderRoutes = require('./routes/orders');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 
 app.use('/auth', authRoutes);
+app.use('/orders', orderRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'index.html'));
