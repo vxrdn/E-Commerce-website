@@ -1,7 +1,12 @@
+// Ensure environment variables are loaded
+require('dotenv').config();
+
 const { Sequelize } = require('sequelize');
 
 // Get database connection string from environment variables
 const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://user:password@localhost:5432/kickskart';
+
+console.log('Database URL:', DATABASE_URL.replace(/:([^:@]+)@/, ':****@')); // Log URL with password hidden
 
 // Create Sequelize instance
 const sequelize = new Sequelize(DATABASE_URL, {
