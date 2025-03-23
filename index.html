@@ -1,551 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
     <!-- Add FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>KicksKart</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav id="nav">
-        <div class="navTop">
-            <div class="navItem">
-                <img src="./image/sneakers.png" alt="KicksKart Logo" class="logo">
-            </div>
-            <div class="navItem auth-buttons">
-                <button class="authButton loginBtn">Login</button>
-                <button class="authButton signupBtn">Sign Up</button>
-            </div>
-            <div class="navItem user-profile" style="display: none;">
-                <span class="username">Welcome, User</span>
-                <div class="cart-icon-container">
-                    <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                    <span class="cart-count">0</span>
-                </div>
-                <button class="logoutBtn">Logout</button>
-            </div>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="navTop">
+        <div class="navItem">
+          <img src="./image/new-logo.png" alt="KicksKart Logo" class="logo" style="height: 50px; width: auto;" />
         </div>
-        <div class="navBottom">
-            <h3 class="menuItem">AIR FORCE</h3>
-            <h3 class="menuItem">JORDAN</h3>
-            <h3 class="menuItem">BLAZER</h3>
-            <h3 class="menuItem">CRATER</h3>
-            <h3 class="menuItem">HIPPIE</h3>
+        <div class="navItem auth-buttons">
+          <button class="authButton loginBtn">Login</button>
+          <button class="authButton signupBtn">Sign Up</button>
         </div>
+        <div class="navItem user-profile" style="display: none">
+          <span class="username">Welcome, User</span>
+          <div class="cart-icon-container">
+            <i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
+            <span class="cart-count">0</span>
+          </div>
+          <button class="logoutBtn">Logout</button>
+        </div>
+        <div class="hamburger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="navBottom">
+        <h3 class="menuItem">AIR FORCE</h3>
+        <h3 class="menuItem">JORDAN</h3>
+        <h3 class="menuItem">BLAZER</h3>
+        <h3 class="menuItem">CRATER</h3>
+        <h3 class="menuItem">HIPPIE</h3>
+      </div>
     </nav>
-    
+
     <!-- Cart Overlay -->
     <div class="cart-overlay">
-        <div class="cart-container">
-            <div class="cart-header">
-                <h2>Your Shopping Cart</h2>
-                <span class="close-cart">×</span>
-            </div>
-            <div class="cart-items">
-                <!-- Cart items will be dynamically added here -->
-            </div>
-            <div class="cart-footer">
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span class="total-amount">$0</span>
-                </div>
-                <button class="cart-checkout-btn">Proceed to Checkout</button>
-                <button class="continue-shopping-btn">Continue Shopping</button>
-            </div>
-            <div class="cart-empty-message">Your cart is empty</div>
+      <div class="cart-container">
+        <div class="cart-header">
+          <h2>Your Shopping Cart</h2>
+          <span class="close-cart">×</span>
         </div>
+        <div class="cart-items">
+          <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Total:</span>
+            <span class="total-amount">$0</span>
+          </div>
+          <button class="cart-checkout-btn">Proceed to Checkout</button>
+          <button class="continue-shopping-btn">Continue Shopping</button>
+        </div>
+        <div class="cart-empty-message">Your cart is empty</div>
+      </div>
     </div>
-    
+
     <div class="slider">
-        <div class="sliderWrapper">
-            <div class="sliderItem">
-                <img src="./image/air.png" alt="Air Force Shoes" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">AIR FORCE<br> NEW<br> SEASON</h1>
-                <h2 class="sliderPrice">$119</h2>
-                <button class="buyButton add-to-cart" data-id="1" data-price="119" data-title="AIR FORCE" data-img="./image/air.png" data-color="1">ADD TO CART</button>
-            </div>
-            <div class="sliderItem">
-                <img src="./image/jordan.png" alt="Jordan Shoes" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">AIR JORDAN<br> NEW<br> SEASON</h1>
-                <h2 class="sliderPrice">$149</h2>
-                <button class="buyButton add-to-cart" data-id="2" data-price="149" data-title="AIR JORDAN" data-img="./image/jordan.png">ADD TO CART</button>
-            </div>
-            <div class="sliderItem">
-                <img src="./image/blazer.png" alt="Blazer Shoes" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">BLAZER<br> NEW<br> SEASON</h1>
-                <h2 class="sliderPrice">$109</h2>
-                <button class="buyButton add-to-cart" data-id="3" data-price="109" data-title="BLAZER" data-img="./image/blazer.png">ADD TO CART</button>
-            </div>
-            <div class="sliderItem">
-                <img src="./image/crater.png" alt="Crater Shoes" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">CRATER<br> NEW<br> SEASON</h1>
-                <h2 class="sliderPrice">$129</h2>
-                <button class="buyButton add-to-cart" data-id="4" data-price="129" data-title="CRATER" data-img="./image/crater.png">ADD TO CART</button>
-            </div>
-            <div class="sliderItem">
-                <img src="./image/hippie.png" alt="Hippie Shoes" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">HIPPIE<br> NEW<br> SEASON</h1>
-                <h2 class="sliderPrice">$99</h2>
-                <button class="buyButton add-to-cart" data-id="5" data-price="99" data-title="HIPPIE" data-img="./image/hippie.png">ADD TO CART</button>
-            </div>
+      <div class="sliderWrapper">
+        <div class="sliderItem">
+          <img src="./image/air.png" alt="Air Force Shoes" class="sliderImg" />
+          <div class="sliderBg"></div>
+          <h1 class="sliderTitle">
+            AIR FORCE<br />
+            NEW<br />
+            SEASON
+          </h1>
+          <h2 class="sliderPrice">$119</h2>
+          <button
+            class="buyButton add-to-cart"
+            data-id="1"
+            data-price="119"
+            data-title="AIR FORCE"
+            data-img="./image/air.png"
+            data-color="1"
+          >
+            ADD TO CART
+          </button>
         </div>
+        <div class="sliderItem">
+          <img src="./image/jordan.png" alt="Jordan Shoes" class="sliderImg" />
+          <div class="sliderBg"></div>
+          <h1 class="sliderTitle">
+            AIR JORDAN<br />
+            NEW<br />
+            SEASON
+          </h1>
+          <h2 class="sliderPrice">$149</h2>
+          <button
+            class="buyButton add-to-cart"
+            data-id="2"
+            data-price="149"
+            data-title="AIR JORDAN"
+            data-img="./image/jordan.png"
+          >
+            ADD TO CART
+          </button>
+        </div>
+        <div class="sliderItem">
+          <img src="./image/blazer.png" alt="Blazer Shoes" class="sliderImg" />
+          <div class="sliderBg"></div>
+          <h1 class="sliderTitle">
+            BLAZER<br />
+            NEW<br />
+            SEASON
+          </h1>
+          <h2 class="sliderPrice">$109</h2>
+          <button
+            class="buyButton add-to-cart"
+            data-id="3"
+            data-price="109"
+            data-title="BLAZER"
+            data-img="./image/blazer.png"
+          >
+            ADD TO CART
+          </button>
+        </div>
+        <div class="sliderItem">
+          <img src="./image/crater.png" alt="Crater Shoes" class="sliderImg" />
+          <div class="sliderBg"></div>
+          <h1 class="sliderTitle">
+            CRATER<br />
+            NEW<br />
+            SEASON
+          </h1>
+          <h2 class="sliderPrice">$129</h2>
+          <button
+            class="buyButton add-to-cart"
+            data-id="4"
+            data-price="129"
+            data-title="CRATER"
+            data-img="./image/crater.png"
+          >
+            ADD TO CART
+          </button>
+        </div>
+        <div class="sliderItem">
+          <img src="./image/hippie.png" alt="Hippie Shoes" class="sliderImg" />
+          <div class="sliderBg"></div>
+          <h1 class="sliderTitle">
+            HIPPIE<br />
+            NEW<br />
+            SEASON
+          </h1>
+          <h2 class="sliderPrice">$99</h2>
+          <button
+            class="buyButton add-to-cart"
+            data-id="5"
+            data-price="99"
+            data-title="HIPPIE"
+            data-img="./image/hippie.png"
+          >
+            ADD TO CART
+          </button>
+        </div>
+      </div>
     </div>
-   
+
     <div class="features">
-        <div class="feature">
-            <img src="./image/shipping.png" alt="" class="featureIcon">
-            <span class="featureTitle">FREE SHIPPING</span>
-            <span class="featureDesc">Free worldwide shipping on all orders.</span>
-        </div>
-        <div class="feature">
-            <img class="featureIcon" src="./image/return.png" alt="">
-            <span class="featureTitle">30 DAYS RETURN</span>
-            <span class="featureDesc">No question return and easy refund in 14 days.</span>
-        </div>
-        <div class="feature">
-            <img class="featureIcon" src="./image/gift.png" alt="">
-            <span class="featureTitle">GIFT CARDS</span>
-            <span class="featureDesc">Buy gift cards and use coupon codes easily.</span>
-        </div>
-        <div class="feature">
-            <img class="featureIcon" src="./image/contact.png" alt="">
-            <span class="featureTitle">CONTACT US!</span>
-            <span class="featureDesc">Keep in touch via email and support system.</span>
-        </div>
+      <div class="feature">
+        <img src="./image/shipping.png" alt="" class="featureIcon" />
+        <span class="featureTitle">FREE SHIPPING</span>
+        <span class="featureDesc">Free worldwide shipping on all orders.</span>
+      </div>
+      <div class="feature">
+        <img class="featureIcon" src="./image/return.png" alt="" />
+        <span class="featureTitle">30 DAYS RETURN</span>
+        <span class="featureDesc"
+          >No question return and easy refund in 14 days.</span
+        >
+      </div>
+      <div class="feature">
+        <img class="featureIcon" src="./image/gift.png" alt="" />
+        <span class="featureTitle">GIFT CARDS</span>
+        <span class="featureDesc"
+          >Buy gift cards and use coupon codes easily.</span
+        >
+      </div>
+      <div class="feature">
+        <img class="featureIcon" src="./image/contact.png" alt="" />
+        <span class="featureTitle">CONTACT US!</span>
+        <span class="featureDesc"
+          >Keep in touch via email and support system.</span
+        >
+      </div>
     </div>
 
     <div class="product" id="product">
-        <img src="./image/air.png" alt="Air Force Product" class="productImg">
-        <div class="productDetails">
-            <h1 class="productTitle">AIR FORCE</h1>
-            <h2 class="productPrice">$199</h2>
-            <p class="productDesc">Lorem ipsum dolor sit amet consectetur impal adipisicing elit. Alias assumenda
-                dolorum doloremque sapiente aliquid aperiam.</p>
-            <div class="colors">
-                <div class="color" data-color="1" data-img="./image/air.png"></div>
-                <div class="color" data-color="2" data-img="./image/air2.png"></div>
-            </div>
-            <div class="sizes">
-                <div class="size">42</div>
-                <div class="size">43</div>
-                <div class="size">44</div>
-            </div>
-            <button class="productButton add-to-cart" data-id="1" data-price="199" data-title="AIR FORCE" data-img="./image/air.png">ADD TO CART</button>
+      <img src="./image/air.png" alt="Air Force Product" class="productImg" />
+      <div class="productDetails">
+        <h1 class="productTitle">AIR FORCE</h1>
+        <h2 class="productPrice">$199</h2>
+        <p class="productDesc">
+          Lorem ipsum dolor sit amet consectetur impal adipisicing elit. Alias
+          assumenda dolorum doloremque sapiente aliquid aperiam.
+        </p>
+        <div class="colors">
+          <div class="color" data-color="1" data-img="./image/air.png"></div>
+          <div class="color" data-color="2" data-img="./image/air2.png"></div>
         </div>
-          
-        <!-- Confirmation Screen -->
-        <div id="confirmationScreen" class="confirmationScreen">
-            <h1>Transaction Complete!</h1>
-            <p>Thank you for your purchase. Your order has been successfully processed.</p>
-            <button id="closeConfirmation">Close</button>
+        <div class="sizes">
+          <div class="size">42</div>
+          <div class="size">43</div>
+          <div class="size">44</div>
         </div>
+        <button
+          class="productButton add-to-cart"
+          data-id="1"
+          data-price="199"
+          data-title="AIR FORCE"
+          data-img="./image/air.png"
+        >
+          ADD TO CART
+        </button>
+      </div>
+
+      <!-- Confirmation Screen -->
+      <div id="confirmationScreen" class="confirmationScreen">
+        <h1>Transaction Complete!</h1>
+        <p>
+          Thank you for your purchase. Your order has been successfully
+          processed.
+        </p>
+        <button id="closeConfirmation">Close</button>
+      </div>
     </div>
 
     <div class="gallery">
-        <div class="galleryItem">
-            <h1 class="galleryTitle">Be Yourself!</h1>
-            <img src="https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
-        </div>
-        <div class="galleryItem">
-            <img src="https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
-            <h1 class="galleryTitle">This is the First Day of Your New Life</h1>
-        </div>
-        <div class="galleryItem">
-            <h1 class="galleryTitle">Just Do it!</h1>
-            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
-        </div>
+      <div class="galleryItem">
+        <h1 class="galleryTitle">Be Yourself!</h1>
+        <img
+          src="https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="galleryImg"
+        />
+      </div>
+      <div class="galleryItem">
+        <img
+          src="https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="galleryImg"
+        />
+        <h1 class="galleryTitle">This is the First Day of Your New Life</h1>
+      </div>
+      <div class="galleryItem">
+        <h1 class="galleryTitle">Just Do it!</h1>
+        <img
+          src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="galleryImg"
+        />
+      </div>
     </div>
     <div class="newSeason">
-        <div class="nsItem">
-            <img src="https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="nsImg">
-        </div>
-        <div class="nsItem">
-            <h3 class="nsTitleSm">WINTER NEW ARRIVALS</h3>
-            <h1 class="nsTitle">New Season</h1>
-            <h1 class="nsTitle">New Collection</h1>
-            <a href="#nav">
-                <button class="nsButton">CHOOSE YOUR STYLE</button>
-            </a>
-        </div>
-        <div class="nsItem">
-            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="nsImg">
-        </div>
+      <div class="nsItem">
+        <img
+          src="https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="nsImg"
+        />
+      </div>
+      <div class="nsItem">
+        <h3 class="nsTitleSm">WINTER NEW ARRIVALS</h3>
+        <h1 class="nsTitle">New Season</h1>
+        <h1 class="nsTitle">New Collection</h1>
+        <a href="#nav">
+          <button class="nsButton">CHOOSE YOUR STYLE</button>
+        </a>
+      </div>
+      <div class="nsItem">
+        <img
+          src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="nsImg"
+        />
+      </div>
     </div>
     <footer>
-        <div class="footerContainer">
-            <div class="footerLeft">
-                <div class="footerMenu">
-                    <h1 class="fMenuTitle">About Us</h1>
-                    <ul class="fList">
-                        <li class="fListItem">Company</li>
-                        <li class="fListItem">Contact</li>
-                        <li class="fListItem">Careers</li>
-                        <li class="fListItem">Affiliates</li>
-                        <li class="fListItem">Stores</li>
-                    </ul>
-                </div>
-                <div class="footerMenu">
-                    <h1 class="fMenuTitle">Useful Links</h1>
-                    <ul class="fList">
-                        <li class="fListItem">Support</li>
-                        <li class="fListItem">Refund</li>
-                        <li class="fListItem">FAQ</li>
-                        <li class="fListItem">Feedback</li>
-                        <li class="fListItem">Stories</li>
-                    </ul>
-                </div>
-                <div class="footerMenu">
-                    <h1 class="fMenuTitle">Products</h1>
-                    <ul class="fList">
-                        <li class="fListItem">Air Force</li>
-                        <li class="fListItem">Air Jordan</li>
-                        <li class="fListItem">Blazer</li>
-                        <li class="fListItem">Crater</li>
-                        <li class="fListItem">Hippie</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footerRight">
-                <div class="footerRightMenu">
-                    <h1 class="fMenuTitle">Subscribe to our newsletter</h1>
-                    <div class="fMail">
-                        <input type="text" placeholder="your@email.com" class="fInput">
-                        <button class="fButton">Join!</button>
-                    </div>
-                </div>
-                <div class="footerRightMenu">
-                    <h1 class="fMenuTitle">Follow Us</h1>
-                    <div class="fIcons">
-                        <img src="./image/facebook.png" alt="Facebook" class="fIcon">
-                        <img src="./image/twitter.png" alt="Twitter" class="fIcon">
-                        <img src="./image/instagram.png" alt="Instagram" class="fIcon">
-                        <img src="./image/whatsapp.png" alt="WhatsApp" class="fIcon">
-                    </div>
-                </div>
-            </div>
+      <div class="footerContainer">
+        <div class="footerLeft">
+          <div class="footerMenu">
+            <h1 class="fMenuTitle">About Us</h1>
+            <ul class="fList">
+              <li class="fListItem">Company</li>
+              <li class="fListItem">Contact</li>
+              <li class="fListItem">Careers</li>
+              <li class="fListItem">Affiliates</li>
+              <li class="fListItem">Stores</li>
+            </ul>
+          </div>
+          <div class="footerMenu">
+            <h1 class="fMenuTitle">Useful Links</h1>
+            <ul class="fList">
+              <li class="fListItem">Support</li>
+              <li class="fListItem">Refund</li>
+              <li class="fListItem">FAQ</li>
+              <li class="fListItem">Feedback</li>
+              <li class="fListItem">Stories</li>
+            </ul>
+          </div>
+          <div class="footerMenu">
+            <h1 class="fMenuTitle">Products</h1>
+            <ul class="fList">
+              <li class="fListItem">Air Force</li>
+              <li class="fListItem">Air Jordan</li>
+              <li class="fListItem">Blazer</li>
+              <li class="fListItem">Crater</li>
+              <li class="fListItem">Hippie</li>
+            </ul>
+          </div>
         </div>
-        <div class="footerBottom">
-            <span class="copyright">© KicksKart. All rights reserved. 2025.</span>
+        <div class="footerRight">
+          <div class="footerRightMenu">
+            <h1 class="fMenuTitle">Subscribe to our newsletter</h1>
+            <div class="fMail">
+              <input type="text" placeholder="your@email.com" class="fInput" />
+              <button class="fButton">Join!</button>
+            </div>
+          </div>
+          <div class="footerRightMenu">
+            <h1 class="fMenuTitle">Follow Us</h1>
+            <div class="fIcons">
+              <img src="./image/facebook.png" alt="Facebook" class="fIcon" />
+              <img src="./image/twitter.png" alt="Twitter" class="fIcon" />
+              <img src="./image/instagram.png" alt="Instagram" class="fIcon" />
+              <img src="./image/whatsapp.png" alt="WhatsApp" class="fIcon" />
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="footerBottom">
+        <span class="copyright">© KicksKart. All rights reserved. 2025.</span>
+      </div>
     </footer>
-    
-    <!-- Add this CSS inline to fix the footer layout -->
-    <style>
-        .footerContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .footerLeft {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            width: 60%;
-        }
-        
-        .footerMenu {
-            width: 30%;
-            margin-bottom: 20px;
-        }
-        
-        .footerRight {
-            width: 35%;
-        }
-        
-        @media (max-width: 768px) {
-            .footerLeft, .footerRight {
-                width: 100%;
-            }
-            
-            .footerMenu {
-                width: 45%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .footerMenu {
-                width: 100%;
-            }
-        }
-        
-        /* Fix for login and signup buttons visibility */
-        .authButton {
-            display: inline-block;
-            padding: 8px 15px;
-            margin: 0 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            background-color: #088178;
-            color: white;
-            border: none;
-            transition: all 0.3s ease;
-            opacity: 1 !important; /* Ensure buttons are always visible */
-            visibility: visible !important;
-        }
-        
-        .authButton:hover {
-            background-color: #066a63;
-            transform: scale(1.05);
-        }
-        
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-        }
 
-        /* User Profile Styles */
-        .user-profile {
-            display: none;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .username {
-            font-weight: 600;
-            color: white;
-        }
-        
-        .logoutBtn {
-            padding: 6px 12px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .logoutBtn:hover {
-            background-color: #d32f2f;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .username {
-                font-size: 14px;
-            }
-            
-            .logoutBtn {
-                padding: 4px 8px;
-                font-size: 12px;
-            }
-        }
-
-        /* Cart Styles */
-        .cart-icon-container {
-            position: relative;
-            margin: 0 15px;
-            cursor: pointer;
-        }
-        
-        .fa-cart-shopping {
-            font-size: 24px;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: #f44336;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .cart-container {
-            background-color: white;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .close-cart {
-            font-size: 28px;
-            cursor: pointer;
-            color: #777;
-        }
-        
-        .cart-items {
-            max-height: 300px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-        }
-        
-        .cart-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .cart-item-img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-right: 15px;
-        }
-        
-        .cart-item-details {
-            flex: 1;
-        }
-        
-        .cart-item-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .cart-item-price {
-            color: #555;
-        }
-        
-        .cart-item-quantity {
-            display: flex;
-            align-items: center;
-            margin: 0 15px;
-        }
-        
-        .quantity-btn {
-            background: none;
-            border: 1px solid #ddd;
-            width: 25px;
-            height: 25px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        
-        .quantity-value {
-            margin: 0 10px;
-            width: 30px;
-            text-align: center;
-        }
-        
-        .remove-item {
-            color: #f44336;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 14px;
-        }
-        
-        .cart-footer {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-        
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        
-        .cart-checkout-btn, .continue-shopping-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 10px;
-            transition: all 0.3s;
-        }
-        
-        .cart-checkout-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .continue-shopping-btn {
-            background-color: #f1f1f1;
-            color: #333;
-        }
-        
-        .cart-empty-message {
-            text-align: center;
-            font-size: 18px;
-            color: #777;
-            padding: 20px;
-            display: none;
-        }
-        
-        @media (max-width: 768px) {
-            .cart-container {
-                width: 95%;
-                max-height: 90vh;
-            }
-            
-            .cart-item {
-                flex-wrap: wrap;
-            }
-            
-            .cart-item-quantity {
-                margin-top: 10px;
-            }
-        }
-    </style>
-    
     <script src="./app.js"></script>
-</body>
-
+  </body>
 </html>
