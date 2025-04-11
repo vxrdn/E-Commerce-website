@@ -1,3 +1,3 @@
 ```bash
-bun run .\server.js
+bun run dev
 ```
