@@ -2,6 +2,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   updateAuthUI();
   initializeCart();
+  
+  // Initialize search functionality
+  initializeSearch();
 });
 
 // Cart Management Functions
@@ -593,6 +596,100 @@ payButton.addEventListener("click", function (event) {
 closeConfirmation.addEventListener("click", function () {
   confirmationScreen.style.display = "none";
 });
+
+// Initialize search functionality
+function initializeSearch() {
+  const searchInput = document.querySelector('.search-input');
+  const searchButton = document.querySelector('.search-button');
+  
+  if (searchInput && searchButton) {
+    // Add event listener to search button
+    searchButton.addEventListener('click', function() {
+      performSearch(searchInput.value);
+    });
+    
+    // Add event listener for Enter key in search input
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch(searchInput.value);
+      }
+    });
+  }
+}
+
+// Function to perform search and redirect to product
+function performSearch(query) {
+  if (!query) return;
+  
+  // Convert search query to lowercase for case-insensitive matching
+  const searchTerm = query.toLowerCase().trim();
+  
+  // Define mapping of search terms to product indices
+  const productMap = {
+    'air': 0, 'force': 0, 'air force': 0,
+    'jordan': 1, 'air jordan': 1,
+    'blazer': 2,
+    'crater': 3,
+    'hippie': 4
+  };
+  
+  // Check if search term matches any product
+  let productIndex = -1;
+  
+  // Try exact match first
+  if (productMap[searchTerm] !== undefined) {
+    productIndex = productMap[searchTerm];
+  } else {
+    // Try partial match
+    for (const [key, index] of Object.entries(productMap)) {
+      if (searchTerm.includes(key) || key.includes(searchTerm)) {
+        productIndex = index;
+        break;
+      }
+    }
+  }
+  
+  // If a match is found, redirect to the product
+  if (productIndex >= 0) {
+    // Change the slider position
+    wrapper.style.transform = `translateX(${-100 * productIndex}vw)`;
+    
+    // Update the chosen product
+    choosenProduct = products[productIndex];
+    
+    // Update product details display
+    currentProductTitle.textContent = choosenProduct.title;
+    currentProductPrice.textContent = "$" + choosenProduct.price;
+    currentProductImg.src = choosenProduct.colors[0].img;
+    
+    // Scroll to product section
+    document.getElementById('product').scrollIntoView({ behavior: 'smooth' });
+    
+    // Update colors
+    currentProductColors.forEach((color, index) => {
+      color.style.backgroundColor = choosenProduct.colors[index].code;
+      color.setAttribute('data-img', choosenProduct.colors[index].img);
+      color.setAttribute('data-color', (index + 1).toString());
+      color.style.border = index === 0 ? '2px solid black' : 'none';
+    });
+    
+    // Update product button data attributes
+    const productButton = document.querySelector(".productButton");
+    if (productButton) {
+      productButton.setAttribute("data-id", choosenProduct.id);
+      productButton.setAttribute("data-title", choosenProduct.title);
+      productButton.setAttribute("data-price", choosenProduct.price);
+      productButton.setAttribute("data-img", choosenProduct.colors[0].img);
+      productButton.setAttribute("data-color", "1");
+    }
+    
+    // Show success message
+    showToast(`Found ${choosenProduct.title}!`);
+  } else {
+    // No match found
+    showToast("No matching products found.");
+  }
+}
 
 // Add toast style to the document
 const style = document.createElement("style");
